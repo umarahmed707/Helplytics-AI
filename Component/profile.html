@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HelpHub AI - Profile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #e4f0e6 0%, #f4f2e6 50%, #f6e6d5 100%);
+            min-height: 100vh;
+            color: #333;
+            padding-bottom: 3rem;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 4rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+        }
+
+        .logo-icon {
+            background-color: #129b82;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #666;
+            font-size: 0.9rem;
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+        .nav-links a.active {
+            background-color: #dcece8;
+            color: #129b82;
+            font-weight: 600;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Profile Hero Banner */
+        .profile-banner {
+            background-color: #1e2629;
+            color: white;
+            padding: 3rem;
+            border-radius: 24px;
+            margin-bottom: 2rem;
+        }
+
+        .profile-banner span {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: #8da39b;
+            font-weight: 600;
+        }
+
+        .profile-banner h1 {
+            font-size: 3rem;
+            margin: 10px 0;
+        }
+
+        .profile-banner p {
+            color: #a8b8b3;
+            font-size: 0.9rem;
+        }
+
+        /* Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: #fcfbf7;
+            padding: 2.5rem;
+            border-radius: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+        }
+
+        .section-tag {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #129b82;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .card h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: #1a1a1a;
+        }
+
+        /* Stats Row */
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 0.95rem;
+        }
+
+        .stat-item span:last-child {
+            font-weight: 700;
+        }
+
+        /* Pills/Tags */
+        .tag-group {
+            margin-top: 1.5rem;
+        }
+
+        .tag-label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .pill {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .pill-skill { background: #e8f3ef; color: #129b82; }
+        .pill-badge { background: #f0f4f8; color: #546e7a; }
+
+        /* Form Styles */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #e0e0e0;
+            border-radius: 12px;
+            background: white;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .save-btn {
+            width: 100%;
+            background-color: #129b82;
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 25px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .save-btn:hover {
+            background-color: #0e806b;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 850px) {
+            .content-grid { grid-template-columns: 1fr; }
+            nav { padding: 1rem 2rem; }
+            .profile-banner h1 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <div class="logo-icon">H</div>
+            <span>HelpHub AI</span>
+        </div>
+        <div class="nav-links">
+            <a href="./Dashboard.html">Dashboard</a>
+            <a href="#">Onboarding</a>
+            <a href="./profile.html" class="active">Profile</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="profile-banner">
+            <span>Profile</span>
+            <h1>Ayesha Khan</h1>
+            <p>Both • Karachi</p>
+        </div>
+
+        <div class="content-grid">
+            <div class="card">
+                <span class="section-tag">Public Profile</span>
+                <h2>Skills and reputation</h2>
+                
+                <div class="stat-item">
+                    <span>Trust score</span>
+                    <span>100%</span>
+                </div>
+                <div class="stat-item">
+                    <span>Contributions</span>
+                    <span>35</span>
+                </div>
+
+                <div class="tag-group">
+                    <span class="tag-label">Skills</span>
+                    <div class="pills">
+                        <span class="pill pill-skill">Figma</span>
+                        <span class="pill pill-skill">UI/UX</span>
+                        <span class="pill pill-skill">HTML/CSS</span>
+                        <span class="pill pill-skill">Career Guidance</span>
+                    </div>
+
+                    <span class="tag-label">Badges</span>
+                    <div class="pills">
+                        <span class="pill pill-badge">Design Ally</span>
+                        <span class="pill pill-badge">Fast Responder</span>
+                        <span class="pill pill-badge">Top Mentor</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <span class="section-tag">Edit Profile</span>
+                <h2>Update your identity</h2>
+
+                <form>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" value="Ayesha Khan">
+                        </div>
+                        <div class="form-group">
+                            <label>Location</label>
+                            <input type="text" value="Karachi">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Skills</label>
+                        <input type="text" value="Figma, UI/UX, HTML/CSS, Career Guidance">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Interests</label>
+                        <input type="text" value="Hackathons, UI/UX, Community Building">
+                    </div>
+
+                    <button type="button" class="save-btn">Save profile</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

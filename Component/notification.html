@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HelpHub AI - Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- CSS Variables & Reset --- */
+        :root {
+            --primary-teal: #129b82;
+            --dark-green: #16342b;
+            --dark-gray: #242c2f;
+            --off-white: #fcfbf7;
+            --text-main: #1a1a1a;
+            --text-muted: #666;
+            --bg-gradient: linear-gradient(135deg, #e4f0e6 0%, #f4f2e6 50%, #f6e6d5 100%);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Inter', sans-serif; }
+
+        body {
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            color: var(--text-main);
+            padding-bottom: 4rem;
+        }
+
+        /* --- Navigation Bar --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 4rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .logo { display: flex; align-items: center; gap: 0.8rem; font-weight: 700; font-size: 1.1rem; }
+        .logo-box {
+            background: var(--primary-teal); color: white;
+            width: 32px; height: 32px; border-radius: 8px;
+            display: flex; justify-content: center; align-items: center;
+        }
+
+        .nav-links { display: flex; gap: 1rem; }
+        .nav-links a {
+            text-decoration: none; color: var(--text-muted); font-size: 0.9rem;
+            padding: 8px 16px; border-radius: 20px; transition: 0.3s;
+        }
+        .nav-links a.active { background: #dcece8; color: var(--primary-teal); font-weight: 600; }
+
+        /* --- Main Layout Container --- */
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+
+        /* --- Hero Banner (Dark Section) --- */
+        .hero-banner {
+            background-color: var(--dark-gray);
+            color: white;
+            padding: 3.5rem;
+            border-radius: 24px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .hero-banner .overline {
+            font-size: 0.7rem; text-transform: uppercase;
+            letter-spacing: 1.5px; color: #a8b8b3; font-weight: 700;
+        }
+
+        .hero-banner h1 { font-size: 2.8rem; margin: 15px 0; line-height: 1.1; font-weight: 700; }
+        .hero-banner p { color: #a8b8b3; font-size: 1rem; max-width: 700px; }
+
+        /* --- White Content Card --- */
+        .content-card {
+            background: var(--off-white);
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+        }
+
+        .card-title { font-size: 2.2rem; margin-bottom: 2rem; color: var(--text-main); }
+
+        /* --- List / Feed Items (Notifications) --- */
+        .feed-item {
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s;
+        }
+        .feed-item:last-child { border-bottom: none; }
+        .feed-item:hover { background: #f9f9f6; }
+
+        .item-text h4 { font-size: 1rem; margin-bottom: 4px; }
+        .item-text span { font-size: 0.8rem; color: var(--text-muted); }
+
+        .btn-unread {
+            background: white; border: 1px solid #e0e0e0;
+            padding: 6px 14px; border-radius: 20px; font-size: 0.75rem;
+            font-weight: 600; cursor: pointer;
+        }
+
+        /* --- Responsive Styles --- */
+        @media (max-width: 850px) {
+            nav { padding: 1.5rem 2rem; }
+            .nav-links { display: none; }
+            .hero-banner { padding: 2rem; }
+            .hero-banner h1 { font-size: 2rem; }
+            .content-card { padding: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <div class="logo-box">H</div> HelpHub AI
+        </div>
+        <div class="nav-links">
+            <a href="./Dashboard.html">Dashboard</a>
+            <a href="./Explore.html">Explore</a>
+            <a href="./notification.html" class="active">Notifications</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <div class="hero-banner">
+            <div class="overline">Notifications</div>
+            <h1>Stay updated on requests, helpers, and trust signals.</h1>
+        </div>
+
+        <div class="content-card">
+            <div class="overline" style="color: var(--primary-teal); margin-bottom: 10px;">Live Updates</div>
+            <h2 class="card-title">Notification feed</h2>
+
+            <div class="feed-item">
+                <div class="item-text">
+                    <h4>"Need help" was marked as solved</h4>
+                    <span>Status • Just now</span>
+                </div>
+                <button class="btn-unread">Unread</button>
+            </div>
+
+            <div class="feed-item">
+                <div class="item-text">
+                    <h4>Ayesha Khan offered help on "Need help"</h4>
+                    <span>Match • Just now</span>
+                </div>
+                <button class="btn-unread">Unread</button>
+            </div>
+
+            <div class="feed-item">
+                <div class="item-text">
+                    <h4>Your request "Need help" is now live in the community feed</h4>
+                    <span>Request • Just now</span>
+                </div>
+                <button class="btn-unread">Unread</button>
+            </div>
+
+            <div class="feed-item">
+                <div class="item-text">
+                    <h4>AI Center detected rising demand for interview prep</h4>
+                    <span>Insight • Today</span>
+                </div>
+                <button class="btn-unread" style="background: #f0f0f0;">Read</button>
+            </div>
+            </div>
+    </div>
+
+</body>
+</html>

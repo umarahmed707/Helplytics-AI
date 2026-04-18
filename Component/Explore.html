@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HelpHub AI - Explore Feed</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles & Resets */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            /* Soft gradient background matching the design */
+            background: linear-gradient(135deg, #e4f0e6 0%, #f4f2e6 50%, #f6e6d5 100%);
+            min-height: 100vh;
+            color: #333;
+            padding-bottom: 4rem;
+        }
+
+        /* --- Navigation Bar --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .logo-icon {
+            background-color: #129b82;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #1a1a1a;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #666;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            transition: all 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #1a1a1a;
+        }
+
+        .nav-links a.active {
+            background-color: #e8f3ef;
+            color: #129b82;
+            font-weight: 600;
+        }
+
+        /* --- Main Layout Container --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* --- Hero Banner (Dark Section) --- */
+        .hero-banner {
+            background-color: #242c2f;
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .hero-overline {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+            color: #a8b8b3;
+            margin-bottom: 1rem;
+        }
+
+        .hero-banner h1 {
+            font-size: 2.5rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            max-width: 800px;
+        }
+
+        .hero-banner p {
+            color: #a8b8b3;
+            font-size: 1rem;
+            max-width: 600px;
+        }
+
+        /* --- Content Grid Layout --- */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        /* --- Sidebar (Filters) --- */
+        .sidebar {
+            background-color: #fcfbf7;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+        }
+
+        .sidebar-overline {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 700;
+            color: #129b82;
+            margin-bottom: 1rem;
+        }
+
+        .sidebar h2 {
+            font-size: 2rem;
+            color: #1a1a1a;
+            margin-bottom: 2.5rem;
+            line-height: 1.1;
+        }
+
+        .filter-group {
+            margin-bottom: 2rem;
+        }
+
+        .filter-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #4a4a4a;
+            margin-bottom: 0.8rem;
+        }
+
+        .filter-group input, 
+        .filter-group select {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid #e5e5e5;
+            border-radius: 12px;
+            background-color: white;
+            font-size: 0.9rem;
+            color: #666;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .filter-group input:focus, 
+        .filter-group select:focus {
+            border-color: #129b82;
+        }
+
+        .filter-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23666666%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem top 50%;
+            background-size: 0.65rem auto;
+        }
+
+        /* --- Feed Area (Cards) --- */
+        .feed {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: #fcfbf7;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Tag Styles */
+        .tag {
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+
+        .tag-teal { background-color: #e8f3ef; color: #129b82; }
+        .tag-red { background-color: #fee2e2; color: #dc2626; }
+        .tag-green { background-color: #dcfce7; color: #16a34a; }
+        .tag-blue { background-color: #e0f2fe; color: #0284c7; }
+        .tag-light-green { background-color: #ecfdf5; color: #059669; }
+
+        .card h3 {
+            font-size: 1.25rem;
+            color: #1a1a1a;
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-top: 1rem;
+        }
+
+        .user-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .user-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #1a1a1a;
+        }
+
+        .user-meta {
+            font-size: 0.8rem;
+            color: #888;
+        }
+
+        .btn-outline {
+            background-color: white;
+            border: 1px solid #e5e5e5;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #1a1a1a;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-outline:hover {
+            border-color: #129b82;
+            color: #129b82;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 900px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                display: none; /* Hide for simple mobile view */
+            }
+            nav { padding: 1.5rem 2rem; }
+            .hero-banner h1 { font-size: 2rem; }
+            .card-footer {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo-container">
+            <div class="logo-icon">H</div>
+            <div class="logo-text">HelpHub AI</div>
+        </div>
+        <div class="nav-links">
+            <a href="./Dashboard.html">Dashboard</a>
+            <a href="./Explore.html" class="active">Explore</a>
+            <a href="./Ranking.html">Leaderboard</a>
+            <a href="./notification.html">Notifications</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <div class="hero-banner">
+            <div class="hero-overline">Explore / Feed</div>
+            <h1>Browse help requests with filterable community context.</h1>
+            <p>Filter by category, urgency, skills, and location to surface the best matches.</p>
+        </div>
+
+        <div class="content-grid">
+            
+            <aside class="sidebar">
+                <div class="sidebar-overline">Filters</div>
+                <h2>Refine the feed</h2>
+
+                <div class="filter-group">
+                    <label>Category</label>
+                    <select>
+                        <option>All categories</option>
+                        <option>Web Development</option>
+                        <option>Design</option>
+                        <option>Career</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label>Urgency</label>
+                    <select>
+                        <option>All urgency levels</option>
+                        <option>High</option>
+                        <option>Medium</option>
+                        <option>Low</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label>Skills</label>
+                    <input type="text" placeholder="React, Figma, Git/GitHub">
+                </div>
+
+                <div class="filter-group">
+                    <label>Location</label>
+                    <input type="text" placeholder="Karachi, Lahore, Remote">
+                </div>
+            </aside>
+
+            <div class="feed">
+                
+                <div class="card">
+                    <div class="card-tags">
+                        <span class="tag tag-teal">Web Development</span>
+                        <span class="tag tag-red">High</span>
+                        <span class="tag tag-green">Solved</span>
+                    </div>
+                    <h3>Need help</h3>
+                    <p>help needed</p>
+                    <div class="card-footer">
+                        <div class="user-info">
+                            <span class="user-name">Ayesha Khan</span>
+                            <span class="user-meta">Karachi • 1 helper interested</span>
+                        </div>
+                        <button class="btn-outline">Open details</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-tags">
+                        <span class="tag tag-teal">Web Development</span>
+                        <span class="tag tag-red">High</span>
+                        <span class="tag tag-green">Solved</span>
+                    </div>
+                    <h3>Need help making my portfolio responsive before demo day</h3>
+                    <p>My HTML/CSS portfolio breaks on tablets and I need layout guidance before tomorrow evening.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-teal">HTML/CSS</span>
+                        <span class="tag tag-teal">Responsive</span>
+                        <span class="tag tag-teal">Portfolio</span>
+                    </div>
+                    <div class="card-footer">
+                        <div class="user-info">
+                            <span class="user-name">Sara Noor</span>
+                            <span class="user-meta">Karachi • 1 helper interested</span>
+                        </div>
+                        <button class="btn-outline">Open details</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-tags">
+                        <span class="tag tag-teal">Design</span>
+                        <span class="tag tag-light-green">Medium</span>
+                        <span class="tag tag-blue">Open</span>
+                    </div>
+                    <h3>Looking for Figma feedback on a volunteer event poster</h3>
+                    <p>I have a draft poster for a campus community event and want sharper hierarchy, spacing, and CTA copy.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-teal">Figma</span>
+                        <span class="tag tag-teal">Poster</span>
+                        <span class="tag tag-teal">Design Review</span>
+                    </div>
+                    <div class="card-footer">
+                        <div class="user-info">
+                            <span class="user-name">Ayesha Khan</span>
+                            <span class="user-meta">Lahore • 1 helper interested</span>
+                        </div>
+                        <button class="btn-outline">Open details</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-tags">
+                        <span class="tag tag-teal">Career</span>
+                        <span class="tag tag-light-green">Low</span>
+                        <span class="tag tag-green">Solved</span>
+                    </div>
+                    <h3>Need mock interview support for internship applications</h3>
+                    <p>Applying to frontend internships and need someone to practice behavioral and technical interview questions with me.</p>
+                    <div class="card-tags">
+                        <span class="tag tag-teal">Interview Prep</span>
+                        <span class="tag tag-teal">Career</span>
+                        <span class="tag tag-teal">Frontend</span>
+                    </div>
+                    <div class="card-footer">
+                        <div class="user-info">
+                            <span class="user-name">Sara Noor</span>
+                            <span class="user-meta">Remote • 2 helpers interested</span>
+                        </div>
+                        <button class="btn-outline">Open details</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

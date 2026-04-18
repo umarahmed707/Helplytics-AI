@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HelpHub AI - Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles & Resets */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            /* Soft gradient background matching the image */
+            background: linear-gradient(135deg, #e4f0e6 0%, #f4f2e6 50%, #f6e6d5 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: #333;
+        }
+
+        /* Navigation Bar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 4rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-icon {
+            background-color: #129b82;
+            color: white;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #1a1a1a;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #666;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .nav-links a:hover {
+            color: #1a1a1a;
+        }
+
+        /* Main Content Layout */
+        .main-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .panels-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            max-width: 1000px;
+            width: 100%;
+        }
+
+        /* Left Panel (Dark Green) */
+        .left-panel {
+            background-color: #16342b;
+            color: white;
+            padding: 3rem;
+            border-radius: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .tagline-left {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            color: #8da39b;
+            margin-bottom: 1rem;
+        }
+
+        .left-panel h1 {
+            font-size: 2.5rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .left-panel p {
+            color: #a8b8b3;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+        }
+
+        .left-panel ul {
+            list-style-type: none;
+        }
+
+        .left-panel li {
+            color: #a8b8b3;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .left-panel li::before {
+            content: "•";
+            color: #a8b8b3;
+        }
+
+        /* Right Panel (Light Form) */
+        .right-panel {
+            background-color: #fcfbf7;
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+        }
+
+        .tagline-right {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            color: #129b82;
+            margin-bottom: 1rem;
+        }
+
+        .right-panel h2 {
+            font-size: 2.2rem;
+            color: #1a1a1a;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            font-weight: 700;
+        }
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            font-size: 0.85rem;
+            color: #4a4a4a;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            background-color: white;
+            font-size: 0.95rem;
+            color: #333;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input:focus, select:focus {
+            border-color: #129b82;
+        }
+
+        /* Dropdown arrow customization */
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23666666%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem top 50%;
+            background-size: 0.65rem auto;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background-color: #129b82;
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 24px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            margin-top: 0.5rem;
+        }
+
+        .submit-btn:hover {
+            background-color: #0e806b;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .panels-wrapper {
+                grid-template-columns: 1fr;
+            }
+            
+            nav {
+                padding: 1.5rem 2rem;
+            }
+            
+            .nav-links {
+                display: none; /* Hiding on mobile for simplicity */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo-container">
+            <div class="logo-icon">H</div>
+            <div class="logo-text">HelpHub AI</div>
+        </div>
+        <div class="nav-links">
+            <a href="./index.html">Home</a>
+            <a href="./Explore.html">Explore</a>
+            <a href="./Ranking.html">Leaderboard</a>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <div class="panels-wrapper">
+            
+            <div class="left-panel">
+                <div class="tagline-left">Community Access</div>
+                <h1>Enter the support network.</h1>
+                <p>Choose a demo identity, set your role, and jump into a multi-page product flow designed for asking, offering, and tracking help with a premium interface.</p>
+                <ul>
+                    <li>Role-based entry for Need Help, Can Help, or Both</li>
+                    <li>Direct path into dashboard, requests, AI Center, and community feed</li>
+                    <li>Persistent demo session powered by LocalStorage</li>
+                </ul>
+            </div>
+
+            <div class="right-panel">
+                <div class="tagline-right">Login / Signup</div>
+                <h2>Authenticate your community profile</h2>
+                
+                <form action="#" method="POST">
+                    <div class="form-group">
+                        <label>Select demo user</label>
+                        <select>
+                            <option>Ayesha Khan</option>
+                            <option>Ali Raza</option>
+                            <option>Guest User</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Role selection</label>
+                        <select>
+                            <option>Both</option>
+                            <option>Need Help</option>
+                            <option>Can Help</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div>
+                            <label>Email</label>
+                            <input type="email" value="community@helphub.ai" readonly>
+                        </div>
+                        <div>
+                            <label>Password</label>
+                            <input type="password" value="password123" readonly>
+                        </div>
+                    </div>
+
+                    <button type="button" class="submit-btn"><a style="text-decoration: none; color: white;" href="./AI_center.html">Continue to dashboard</a></button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>

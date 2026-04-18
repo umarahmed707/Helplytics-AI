@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HelpHub AI - AI Center</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Base Resets */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #e4f0e6 0%, #f4f2e6 50%, #f6e6d5 100%);
+            min-height: 100vh;
+            padding-bottom: 50px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Hero Section (Dark Banner) */
+        .hero-banner {
+            background-color: #242c2f;
+            color: white;
+            padding: 40px;
+            border-radius: 24px;
+            margin-bottom: -60px; /* Overlap effect for cards */
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-banner span {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #a8b8b3;
+            font-weight: 700;
+        }
+
+        .hero-banner h1 {
+            font-size: 36px;
+            margin: 15px 0;
+            line-height: 1.1;
+            max-width: 700px;
+        }
+
+        .hero-banner p {
+            color: #a8b8b3;
+            font-size: 14px;
+        }
+
+        /* Navigation Bar */
+        nav {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+        .logo-box { background: #129b82; color: white; width: 28px; height: 28px; border-radius: 6px; display: flex; justify-content: center; align-items: center; }
+
+        .nav-links { display: flex; gap: 20px; align-items: center; }
+        .nav-links a { text-decoration: none; color: #666; font-size: 13px; font-weight: 500; }
+        .nav-links .active { background: #dcece8; color: #129b82; padding: 6px 15px; border-radius: 20px; }
+
+        /* Stats Grid (The 3 Cards) */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            position: relative;
+            z-index: 2;
+            margin-top: 80px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: #fcfbf7;
+            padding: 25px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+
+        .stat-label { font-size: 10px; font-weight: 800; color: #129b82; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; }
+        .stat-value { font-size: 24px; font-weight: 700; color: #1a1a1a; margin-bottom: 10px; line-height: 1.2; }
+        .stat-desc { font-size: 12px; color: #777; line-height: 1.5; }
+
+        /* AI Recommendations Section */
+        .recommendations {
+            background: #fcfbf7;
+            padding: 40px;
+            border-radius: 24px;
+        }
+
+        .rec-label { color: #129b82; font-size: 11px; font-weight: 700; text-transform: uppercase; margin-bottom: 15px; display: block; }
+        .recommendations h2 { font-size: 28px; margin-bottom: 30px; color: #1a1a1a; }
+
+        /* Request Cards */
+        .req-card {
+            background: #f9f8f4;
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 15px;
+            border: 1px solid #f0eee8;
+        }
+
+        .req-title { font-weight: 700; font-size: 14px; margin-bottom: 8px; color: #1a1a1a; }
+        .req-summary { font-size: 13px; color: #777; margin-bottom: 15px; }
+
+        .tags { display: flex; gap: 10px; }
+        .tag { font-size: 11px; font-weight: 600; padding: 4px 12px; border-radius: 20px; }
+        .tag-tech { background: #e8f3ef; color: #129b82; }
+        .tag-urgency { background: #fdf2e9; color: #e67e22; }
+        .tag-design { background: #e9f5f8; color: #2980b9; }
+        .tag-career { background: #f0f4f8; color: #546e7a; }
+
+        @media (max-width: 768px) {
+            .stats-grid { grid-template-columns: 1fr; }
+            .hero-banner h1 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <div class="logo-box">H</div> HelpHub AI
+        </div>
+        <div class="nav-links">
+            <a href="./Dashboard.html">Dashboard</a>
+            <a href="./Createrequest.html">Create Request</a>
+            <a href="./AI_center.html" class="active">AI Center</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="hero-banner">
+            <span>AI Center</span>
+            <h1>See what the platform intelligence is noticing.</h1>
+            <p>AI-like insights summarize demand trends, helper readiness, urgency signals, and request recommendations.</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">Trend Pulse</div>
+                <div class="stat-value">Web Development</div>
+                <div class="stat-desc">Most common support area based on active community requests.</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Urgency Watch</div>
+                <div class="stat-value">2</div>
+                <div class="stat-desc">Requests currently flagged high priority by the urgency detector.</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Mentor Pool</div>
+                <div class="stat-value">2</div>
+                <div class="stat-desc">Trusted helpers with strong response history and contribution signals.</div>
+            </div>
+        </div>
+
+        <div class="recommendations">
+            <span class="rec-label">AI Recommendations</span>
+            <h2>Requests needing attention</h2>
+
+            <div class="req-card">
+                <div class="req-title">Need help</div>
+                <div class="req-summary">AI summary: Web Development request with high urgency. Best suited for members with relevant expertise.</div>
+                <div class="tags">
+                    <span class="tag tag-tech">Web Development</span>
+                    <span class="tag tag-urgency">High</span>
+                </div>
+            </div>
+
+            <div class="req-card">
+                <div class="req-title">Need help making my portfolio responsive before demo day</div>
+                <div class="req-summary">Responsive layout issue with a short deadline. Best helpers are frontend mentors comfortable with CSS grids and media queries.</div>
+                <div class="tags">
+                    <span class="tag tag-tech">Web Development</span>
+                    <span class="tag tag-urgency">High</span>
+                </div>
+            </div>
+
+            <div class="req-card">
+                <div class="req-title">Looking for Figma feedback on a volunteer event poster</div>
+                <div class="req-summary">A visual design critique request where feedback on hierarchy, spacing, and messaging would create the most value.</div>
+                <div class="tags">
+                    <span class="tag tag-design">Design</span>
+                    <span class="tag tag-career">Medium</span>
+                </div>
+            </div>
+
+            <div class="req-card">
+                <div class="req-title">Need mock interview support for internship applications</div>
+                <div class="req-summary">Career coaching request focused on confidence-building, behavioral answers, and entry-level frontend interviews.</div>
+                <div class="tags">
+                    <span class="tag tag-career">Career</span>
+                    <span class="tag tag-tech">Low</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
